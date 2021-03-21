@@ -1,0 +1,603 @@
+/***********************
+var
+***********************/
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;300;400;500;600;700;900&display=swap');
+$white: #fff;
+$black: #000;
+$fontFamily: 'Raleway', sans-serif;
+$fontSize: 16px;
+$fontweight: 300;
+$pink: #ef1f52;
+$gray: gray;
+$lightGray: #cccac5;
+$transition: .5s ease;
+$padding:50px 0;
+
+
+/***********************
+Basic styles
+***********************/
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:$fontFamily;
+    font-size:$fontSize;
+    font-weight: $fontweight;
+    line-height: 1.6;
+}
+
+h1,h2,h3,h4,h5,h6{
+    font-weight: 600;
+}
+
+ul{
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+    color: $black;
+    cursor: pointer;
+    &:hover{
+        color: $white;
+        transition: $transition;
+    
+    }
+}
+
+button{
+    border: none;
+    &:hover{
+        background-color: rgba($black,.9);
+        transition: $transition;
+        color: $white;
+    }
+}
+hr{
+    opacity: 50%;
+}
+
+.cont{
+    width: 80%;
+    margin: 0 auto;
+}
+
+
+/***********************
+mixins
+***********************/
+@mixin btn {
+    padding: 15px 30px;
+    color: $white;
+    background-color: $pink;
+}
+
+@mixin flex ($justify,$align,$direction) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: $justify;
+    align-items: $align;
+    flex-direction: $direction;
+}
+
+/***********************
+nav-bar
+***********************/
+nav{
+    @include flex(space-between, center, row);
+    padding: 20px 40px;
+    background: linear-gradient(to right,$pink,$lightGray);
+    @media (max-width:727px) {
+        @include flex(center, center, column);
+        background: linear-gradient(to bottom,$pink,$lightGray);
+    }
+
+    .logo{
+            h2{
+            font-size: 2rem;
+            line-height: 35px;
+            font-weight: 700;
+            text-transform: uppercase;
+            @media (max-width:727px) {
+                font-size: 2.5rem;
+            }
+        }
+        p{
+            color: $white;
+            font-weight: 500;
+            @media (max-width:727px) {
+                text-align: center;
+                padding: 10px 0;
+            }
+        }
+    }
+
+    ul{
+        @include flex(center, center, row);
+        li{
+            margin-left: 25px;
+            text-transform: uppercase;
+            font-weight: 500;
+            &:nth-child(5){
+                background:$pink;
+                @media (max-width:727px) {
+                    margin-top: 10px;
+                }
+                a{ 
+                    display: block;
+                    width: 100%;
+                    height: 100%;
+                    padding: 10px 20px;
+                    font-weight: 500;
+                    color: $black;
+                    &:hover{
+                        color: $white;
+                        transition: $transition;
+                        background: $lightGray;
+                    }
+                }
+                
+            
+            }
+            &:nth-child(6){
+                background-color: $black;
+                @media (max-width:727px) {
+                    margin-top: 10px;
+                }
+                a{ 
+                    display: block;
+                    width: 100%;
+                    height: 100%;
+                    padding: 10px 20px;
+                    font-weight: 500;
+                    color: $lightGray;
+                    
+                    &:hover{
+                        color: $black;
+                        transition: $transition;
+                        background: $lightGray;
+                    }
+                }
+            }
+
+        }
+        button{
+            @include btn;
+            margin-left: 15px;
+        }
+    }
+}
+
+/***********************
+header
+***********************/
+header{
+    @include flex(flex-end, center, row);
+    background-image: url(../img/header.jpg);
+    background-position: center right;
+    background-size: cover;
+    background-repeat: no-repeat;
+    @media (max-width:727px) {
+        background-position: center right;
+    }
+    
+    section{
+        flex: 0 0 50%;
+        text-align: right;
+        padding-right: 200px;
+        padding-top: 86px;
+        @media (max-width:727px) {
+            flex: 0 0 100%;
+            padding-right:0;
+            text-align: center;
+        }
+        h1{
+            font-size: 3.5rem;
+            line-height: 1.3;
+            @media (max-width:727px) {
+                font-size: 2rem;
+            }
+        }
+        h3{
+            font-size: 2rem;
+            margin: 15px 0;
+            @media (max-width:727px) {
+                font-size: 1.5rem;
+            }
+        }
+        p{
+            font-size: 1.4rem;
+            @media (max-width:727px) {
+                font-size: 1rem;
+            }
+        }
+        button{
+            margin-top: 25px;
+            @include btn;
+            margin-bottom: 86px;
+
+        }
+    }
+}
+
+/***********************
+headings
+***********************/
+
+.headings{
+    @include flex(center, center, row);
+    @media (max-width:727px) {
+        @include flex(center, center, column);
+    }
+    article{
+        flex:0 0 75%;
+        padding: 20px 0;
+        @media (max-width:727px) {
+            flex: 0 0 80%;
+            text-align: left;
+        }
+        &:first-child{
+            flex: 0 0 25%;
+            color: $gray;
+            @media (max-width:727px) {
+                flex: 0 0 20%;
+                
+            }
+        }
+        h2{
+            &:first-child{
+            font-size: 5rem;
+            padding:50px;
+            @media (max-width:727px) {
+                padding: 0px;
+                padding-top: 10px;
+                font-size: 4rem;
+            }
+        }
+        }
+        h2{
+            font-size: 2rem;
+            line-height: 1;
+            padding: 20px 0;
+            text-transform: uppercase;
+            @media (max-width:727px) {
+                padding: 10px 0;
+            }
+            span{
+                color: $pink;
+                font-weight: 700;
+            }
+        }
+        h3{
+            padding-top: 20px;
+            font-size: 1.5rem;
+            color: $gray;
+            text-transform: uppercase;
+            @media (max-width:727px) {
+                padding-top: 0px;
+            }
+        }
+        h4{
+            padding-bottom: 20px;
+            font-size: 1.2rem;
+            color: $gray;
+        }
+
+        button{
+            @include btn;
+            margin-bottom: 15px;
+            &:hover{
+                background: $gray;
+            }
+        }
+    }
+}
+/***********************
+everything you need
+***********************/
+
+.solution{
+    @include flex( center, center, row);
+    background-color: $black;
+    article{
+        flex: 0 0 50%;
+        color: $white;
+        @media (max-width:727px) {
+            flex: 0 0 100%;
+        }
+        
+        img{
+            display: block;
+            width: 100%;
+            object-fit: cover;
+            height: 500px;
+            @media (max-width:727px) {
+                height: 250px;
+            }
+        }
+
+        h3{
+            font-size: 2.5rem;
+            padding: 0 25px 10px;
+            color: $pink;
+            
+            @media (max-width:727px) {
+                font-size: 2rem;
+                padding: 30px 10px 5px;
+                line-height: 1.1;
+                text-align: center;
+            }
+        }
+        p{
+            font-size: 1.2rem;
+            padding: 25px;
+            padding-top: 0px;
+            @media (max-width:727px) {
+                font-size: 1rem;
+                padding: 15px;
+                text-align: center;
+                padding-bottom: 30px;
+            }
+        }
+    }
+}
+
+/***********************
+about
+***********************/
+.about{
+    @include flex(space-between, center, row);
+    @media (max-width:727px) {
+        margin: 0;
+        width: 100%;
+        padding: 10px;
+    }
+    
+    article{
+        flex: 0 0 31%;
+        border: 1px solid $black;
+        text-align: left;
+        padding: 20px;
+        margin-bottom: 3%;
+
+        &:hover{
+            box-shadow: 0 0 20px $lightGray;
+            transition: $transition;
+            scale: 1.08;
+        }
+        @media (max-width:727px) {
+            flex: 0 0 100%;
+            &:hover{
+                scale: 1.03;
+            }
+        }
+
+        i{
+            font-size: 3rem;
+            color: $pink;
+        }
+
+        h6{
+            font-size: 1.5rem;
+        }
+        p{
+            text-align: left;
+            font-size: 0.8rem;
+            padding-top: 10px;
+        }
+    }
+}
+
+/*****************************
+03 black head
+******************************/ 
+
+.black{
+    background-color: $black;
+    h2{
+        color: $white;
+    }
+    }
+
+/*****************************
+counter
+******************************/ 
+.counter{
+background-color: $black;
+    .cont{
+    @include flex(space-between, center, row);
+    text-align: center;
+    background-color: $black;
+    color:$white;
+    padding: 35px;
+    padding-top: 0px;
+    @media (max-width:727px) {
+        @include flex(space-between, center, column);
+    }
+    h3{
+        font-size: 4rem;
+        color: $pink;
+        @media (max-width:727px) {
+            font-size: 3rem;
+        }
+    }
+
+    p{
+        font-size: 1.2rem;
+
+    }
+    hr{
+        width: 100%;
+        margin-top: 10px;
+    }
+    }
+}
+
+/***********************
+04-services
+***********************/
+
+.heading{
+    @include flex(center, center, row);
+    @media (max-width:727px) {
+        @include flex(center, center, column);
+    }
+    article{
+        flex:0 0 75%;
+        padding: 20px 0;
+        @media (max-width:727px) {
+            flex: 0 0 80%;
+            text-align: left;
+        }
+        &:first-child{
+            flex: 0 0 25%;
+            color: $gray;
+            @media (max-width:727px) {
+                flex: 0 0 20%;
+                
+            }
+        }
+        h2{
+            &:first-child{
+            font-size: 5rem;
+            padding:50px;
+            @media (max-width:727px) {
+                padding: 0px;
+                padding-top: 10px;
+                font-size: 4rem;
+            }
+        }
+        }
+        h2{
+            font-size: 2rem;
+            line-height: 1;
+            padding: 20px 0;
+            @media (max-width:727px) {
+                padding: 10px 0;
+            }
+            span{
+                color: $pink;
+                font-weight: 700;
+            }
+        }
+        h3{
+            padding-top: 20px;
+            font-size: 1.5rem;
+            color: $gray;
+            text-transform: uppercase;
+            @media (max-width:727px) {
+                padding-top: 0px;
+            }
+        }
+        h4{
+            padding-bottom: 20px;
+            font-size: 1.2rem;
+            color: $gray;
+        }
+
+        button{
+            @include btn;
+            margin-bottom: 15px;
+            &:hover{
+                background: $gray;
+            }
+        }
+    }
+}
+
+/***********************
+team
+***********************/
+
+.team{
+    @include flex(space-between, center, row);
+    margin-top: 15px;
+    div{
+        @include flex(center, center, column);
+        flex: 0 0 30%;
+        @media (max-width:727px) {
+            flex: 0 0 100%;
+        }
+        img{
+            border-radius: 50%;
+            width: 100%;
+            opacity: .8;
+            transition: $transition;
+            border:  15px solid $lightGray;
+            @media (max-width:727px) {
+                width: 70%;
+            }
+            &:hover{
+                transform: scale(1.1);
+                border:  13px solid $pink;
+            }
+        }
+        h4{
+            font-size: 1.6rem;
+            padding: 15px 0;
+            color: $pink;
+        }
+        p{
+            text-align: center;
+            padding-bottom: 25px;
+        }
+    }
+}
+
+/***********************
+footer
+***********************/
+footer{
+    
+    background: linear-gradient(to left,$pink,$black);
+.cont{
+    @include flex(space-between, center, row);
+    padding: 20px 40px;
+    width: 80%;
+    margin: 0 auto;
+    @media (max-width:727px) {
+        width: 100%;
+        @include flex(center, center, column);
+    }
+    
+    .logo{
+        text-align: left;
+        @media (max-width:727px) {
+            margin-top: 10px;
+        }
+        h2{
+            font-size: 2rem;
+            line-height: 35px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: white;
+            @media (max-width:727px) {
+                font-size: 2.5rem;
+            }
+            &:hover{
+                color: $pink;
+                transition: $transition;
+            }
+        }
+        p{
+            color: $white;
+            font-weight: 500;
+            @media (max-width:727px) {
+                text-align: center;
+            }
+        }
+    }
+    div{
+        text-align: center;
+        color: $lightGray;
+        @media (max-width:727px) {
+            padding:10px 0;
+        }
+    }
+}
+
+}
